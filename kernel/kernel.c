@@ -1,8 +1,16 @@
+/*
+   NanoShell OS
+   
+   Kernel.c -> Main kernel functions
+   
+   - Also serves to unite all of the other code (spread around in builtin/ and drivers/.
+*/
+
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
 #include <stdarg.h>
-
+// 0x10271d
 #define max(a, b) a > b ? a : b
 #define min(a, b) a < b ? a : b
 
@@ -30,10 +38,10 @@ void KernelMain(void)
 	TerminalClear();
 	terminal_row = 0;
 	terminal_column = 0;
-	puts("Operating system demo  Copyright (C) 2019 iProgramInCpp\n");
-    	puts("This program comes with ABSOLUTELY NO WARRANTY; for details type `show-w'.\n");
-    	puts("This is free software, and you are welcome to redistribute it\n");
-    	puts("under certain conditions; type `show-c' for details.\n");
+	puts("Operating system demo  Copyright (C) 2019 iProgramInCpp\n\n");
+    puts("This program comes with ABSOLUTELY NO WARRANTY; for details type `show-w'.\n");
+    puts("This is free software, and you are welcome to redistribute it\n");
+    puts("under certain conditions; type `show-c' for details.\n");
 	
 	InitIDT();
 	InitKeyboard();
