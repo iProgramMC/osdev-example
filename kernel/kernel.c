@@ -42,6 +42,10 @@ void KernelMain(void)
 	terminal_row = 0;
 	terminal_column = 0;
 	printf("%s\n%s\n", OS_NAME, COPYRIGHT_MSG);
+	puts("Operating system demo  Copyright (C) 2019 iProgramInCpp\n");
+    	puts("This program comes with ABSOLUTELY NO WARRANTY; for details type `show-w'.\n");
+    	puts("This is free software, and you are welcome to redistribute it\n");
+    	puts("under certain conditions; type `show-c' for details.\n");
 	
 	InitIDT();
 	InitKeyboard();
