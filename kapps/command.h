@@ -44,6 +44,15 @@ void ProcessCommand()
 	{
 		printf("\n\n%s", OS_NAME);
 	}
+	// The GNU GPLv3 requests this
+	else if(strcmp(CmdBuffer, "show-w") == 0)
+	{
+		puts("\n\nThe GNU GPLv3 license provides no warranty, as described in section 15 of the license file.\n\n\n15. Disclaimer of Warranty.\n\nTHERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY\nAPPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT\nHOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM \"AS IS\" WITHOUT WARRANTY\nOF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,\nTHE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR\nPURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM\nIS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF\nALL NECESSARY SERVICING, REPAIR OR CORRECTION.\nEnd of passage.\n");
+	}
+	else if(strcmp(CmdBuffer, "show-c") == 0)
+	{
+		puts("\n\nCheck the GNU GPLv3 license for that, as I could not find it, at https://choosealicense.com/licenses/gpl-3.0/\n");
+	}
 	else if(strcmp(CmdBuffer, "cls") == 0)
 	{
 		TerminalClear();
