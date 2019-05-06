@@ -40,11 +40,16 @@ LoadIDT:
 	lidt [edx]
 	sti
 	ret
+LoadGDT:
+	mov edx, [esp + 4]
+	lgdt [edx]
+	sti
+	ret
 global KeyboardHandler
 global ReadPort
 global WritePort
 global LoadIDT
-
+global LoadGDT
 
 extern KernelMain 		;this is defined in the c file
 extern KeyboardHandlerMain
@@ -137,4 +142,4 @@ WriteFont16px:
 
 KeyboardHandler:
 	call KeyboardHandlerMain
-	iretd
+    iretd
