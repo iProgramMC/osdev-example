@@ -2,6 +2,8 @@
 #define CMDSIZE 128
 #define USER "user"
 #define DOMAIN "os-test"
+#define OS_NAME "Operating system test"
+#define COPYRIGHT_MSG "(c) 2019 iProgramInCpp"
 char CmdBuffer [CMDSIZE];
 
 uint16_t term_x = 0;
