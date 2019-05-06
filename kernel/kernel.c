@@ -1,11 +1,3 @@
-/*
-   NanoShell OS
-   
-   Kernel.c -> Main kernel functions
-   
-   - Also serves to unite all of the other code (spread around in builtin/ and drivers/.
-*/
-
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
