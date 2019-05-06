@@ -6,9 +6,6 @@
 #define max(a, b) a > b ? a : b
 #define min(a, b) a < b ? a : b
 
-#define OS_NAME "Welcome to the Operating system test"
-#define COPYRIGHT_MSG "(c) 2019 iProgramInCpp"
-
 #define BYTE unsigned char
 #include "drivers/terminal.h"
 #include "data.h"
@@ -33,7 +30,6 @@ void KernelMain(void)
 	TerminalClear();
 	terminal_row = 0;
 	terminal_column = 0;
-	printf("%s\n%s\n", OS_NAME, COPYRIGHT_MSG);
 	puts("Operating system demo  Copyright (C) 2019 iProgramInCpp\n");
     	puts("This program comes with ABSOLUTELY NO WARRANTY; for details type `show-w'.\n");
     	puts("This is free software, and you are welcome to redistribute it\n");
