@@ -1,0 +1,2 @@
+vdisk file="Z:\nanoshell\build\hard.vhd"
+attach vdisk

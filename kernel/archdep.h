@@ -1,0 +1,1 @@
+extern void fast_memcpy(void* d, void* s, int count);
