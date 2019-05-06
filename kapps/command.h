@@ -1,7 +1,7 @@
 
 #define CMDSIZE 128
-#define USER "admin"
-#define DOMAIN "nanoshell"
+#define USER "user"
+#define DOMAIN "os-test"
 char CmdBuffer [CMDSIZE];
 
 uint16_t term_x = 0;
