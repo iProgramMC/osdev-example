@@ -41,6 +41,44 @@ stack_top:
 ; Declare _start as a function symbol with the given symbol size.
 section .text
 global _start;:function (_start.end - _start)
+extern KernelMain
+extern KeyboardHandlerMain
+GDTStart:
+GDTNull:
+	dd 0x0
+	dd 0x0
+GDTCode:
+	dw 0xffff
+	dw 0x00
+	db 0x00
+	db 0x9a
+	db 0xcf
+	db 0x00
+GDTData:
+	dw 0xffff
+	dw 0x00
+	db 0x00
+	db 0x92
+	db 0xcf
+	db 0x00
+GDTEnd:
+GDTDescription:
+	dw GDTEnd - GDTStart - 1
+	dd GDTStart
+CODE_SEG equ GDTCode - GDTStart
+DATA_SEG equ GDTData - GDTStart
+InitGDT:
+	lgdt [GDTDescription]
+	jmp CODE_SEG:.set_cs
+.set_cs:
+	mov eax, DATA_SEG
+	mov ds, eax
+	mov es, eax
+	mov fs, eax
+	mov gs, eax
+	mov ss, eax
+	ret
+	
 _start:
 	; The bootloader has loaded us into 32-bit protected mode on a x86
 	; machine. Interrupts are disabled. Paging is disabled. The processor
@@ -74,8 +112,7 @@ _start:
 	; stack since (pushed 0 bytes so far) and the alignment is thus
 	; preserved and the call is well defined.
         ; note, that if you are building on Windows, C functions may have "_" prefix in assembly: _kernel_main
-	extern KernelMain
-	extern KeyboardHandlerMain
+	call InitGDT
 	call KernelMain
  
 	; If the system has nothing more to do, put the computer into an
