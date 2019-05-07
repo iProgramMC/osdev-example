@@ -24,54 +24,7 @@ struct idtentry {
 	unsigned char type_attr;
 	unsigned short offset_higherbits;
 };
-#define GdtEntry struct gdtentry
-struct gdtentry {
-	uint16_t segment_limit_low;
-	uint16_t base_low;
-	uint8_t base_highlow; // bytes 16-23
-	uint8_t access_byte;
-	uint8_t flags;
-	uint8_t base_highhigh; // bytes 24-31
-};
-GdtEntry GDT[GDT_SIZE];
 IdtEntry IDT[IDT_SIZE];
-
-void InitGDT()
-{
-	unsigned long gdt_addr;
-	unsigned long gdt_ptr[2];
-	
-	// Populate GDT entry of the null descriptor
-	GDT[0].segment_limit_low = 0x00;
-	GDT[0].base_low = 0x00;
-	GDT[0].base_highlow = 0x00;
-	GDT[0].access_byte = 0x00;
-	GDT[0].flags = 0x00;
-	GDT[0].base_highhigh = 0; 
-	
-	// Populate GDT entry of code
-	GDT[1].segment_limit_low = 0xff;
-	GDT[1].base_low = 0x00;
-	GDT[1].base_highlow = 0x00;
-	GDT[1].access_byte = 0x9a;
-	GDT[1].flags = 0xcf;
-	GDT[1].base_highhigh = 0;
-	
-	// Populate GDT entry of data
-	GDT[2].segment_limit_low = 0xff;
-	GDT[2].base_low = 0x00;
-	GDT[2].base_highlow = 0x00;
-	GDT[2].access_byte = 0x92;
-	GDT[2].flags = 0xcf;
-	GDT[2].base_highhigh = 0;
-	
-	gdt_addr = (unsigned long)GDT;
-	gdt_ptr[0] = (sizeof (GdtEntry) * GDT_SIZE) + ((gdt_addr & 0xffff) << 16);
-	gdt_ptr[1] = gdt_addr >> 16;
-	
-	LoadGDT(gdt_ptr);
-}
-
 void InitIDT()
 {
 	unsigned long keyboard_address;
